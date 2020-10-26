@@ -83,20 +83,40 @@ body .container .form-section form {
   margin: 8px 0;
   padding: 32px 32px;
 }
-body .container .form-section form input {
+body .container .form-section form div {
+  margin-bottom: 16px;
+  position: relative;
+}
+body .container .form-section form div img {
+  display: none;
+  top: 0;
+  bottom: 25%;
+  right: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: absolute;
+}
+body .container .form-section form div .error-message {
+  display: none;
+  text-align: right;
+  color: #ff7a7a;
+  font-size: 0.625rem;
+  font-style: italic;
+  margin: 0;
+  padding: 0 4px;
+}
+body .container .form-section form div input {
   border: 1px solid lightgray;
   border-radius: 5px;
   color: #3e3c49;
   font-weight: 700;
-  margin-bottom: 16px;
   padding: 16px 16px;
-  position: relative;
   outline: none;
 }
-body .container .form-section form input:focus {
+body .container .form-section form div input:focus {
   border-color: #3e3c49;
 }
-body .container .form-section form input::placeholder {
+body .container .form-section form div input::placeholder {
   font-weight: 400;
 }
 body .container .form-section form button {
