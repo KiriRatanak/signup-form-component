@@ -1,0 +1,206 @@
+/*Colors*/
+$bg-color: hsla(0, 100%, 74%, 1);
+$primary-red: hsl(0, 100%, 74%);
+$primary-green: hsl(154, 59%, 51%);
+$accent-blue: hsl(248, 32%, 49%);
+$light-blue: hsl(246, 25%, 77%);
+$dark-blue: hsl(249, 10%, 26%);
+$button-shadow: hsla(260, 12%, 29%, 0.2);
+$form-shadow: hsla(255, 10%, 20%, 0.2);
+
+/*Spacing*/
+$space-xxs: 2px;
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 32px;
+$space-xl: 64px;
+
+/*Font*/
+$default-font: 'Poppins', sans-serif;
+
+
+*, :after, :before {
+	border: 0 solid;
+	box-sizing: border-box;
+	color: inherit;
+	font-family: inherit;
+	overflow-wrap: break-word;
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: auto;
+	width: 100%;
+	font-family: $default-font;
+}
+
+.stack {
+	display: flex;
+	flex-direction: column;
+}
+
+.center {
+	align-items: center;
+	justify-content: center;
+}
+
+body {
+	background-color: $bg-color;
+	background-image: url('./images/bg-intro-mobile.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	justify-content: space-between;
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+	.container {
+		margin: $space-xl 0;
+		padding: 0 $space-md;
+		height: 100%;
+		width: auto;
+
+		.hero-section{
+			margin: $space-lg 0;
+			text-align: center;
+
+			h2, p {
+				color: white;
+				margin-bottom: $space-md;
+			}
+
+			h2 {
+				font-size: 2rem;
+			}
+
+			p {
+				font-weight: 400;
+				line-height: 1.7rem;
+				max-width: 50ch;		
+			}
+		}
+
+		.form-section {
+			.trail-button {
+				color: white;
+				cursor: pointer;
+				background-color: $accent-blue;
+				border-radius: 9px;
+				box-shadow: 0 5px 2px 2px $button-shadow;
+				font-size: 1rem;
+				font-weight: 700;
+				margin: $space-md 0;
+				padding: $space-md $space-xl;
+				outline: none;
+				text-align: center;
+				
+				span {
+					font-weight: 400;
+					opacity: 0.7;
+				}
+			}
+
+			form {
+				background-color: white;
+				border-radius: 9px;
+				box-shadow: 0 5px 2px 3px $form-shadow;
+				margin: $space-sm 0;
+				padding: $space-lg $space-lg;
+
+				input {
+					border: 1px solid lightgray;
+					border-radius: 5px;
+					color: $dark-blue;
+					font-weight: 700;
+					margin-bottom: $space-md;
+					padding: $space-md $space-md;
+					position: relative;
+					outline: none;
+
+					&:focus {
+						border-color: $dark-blue;
+					}
+
+					&::placeholder {
+						font-weight: 400;
+					}
+				}
+
+				button {
+					background-color: $primary-green;
+					border-radius: 5px;
+					color: white;
+					cursor: pointer;
+					font-weight: 500;
+					letter-spacing: 1px;
+					padding: $space-md 0;
+					margin-bottom: $space-md;
+					outline: none;
+					text-transform: uppercase;
+				}
+
+				p {
+					color: $light-blue;
+					font-size: 0.7rem;
+					margin-bottom: $space-md;
+					padding: 0 $space-md;
+					text-align: center;
+
+					a {
+						color: $primary-red;
+						font-weight: 600;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	html, body, main {
+		height: 100%;
+		width: 100%;
+	}
+
+	body {
+		background-image: url('./images/bg-intro-desktop.png');
+
+		.container {
+			flex-direction: row;
+			height: 100%;
+			margin: 0 $space-xl;
+			padding: 0 0;
+	
+			.hero-section {
+				align-items: flex-start;
+				justify-content: flex-start;
+				margin-right: $space-xl;
+				max-width: 50ch;
+				width: auto;
+
+				h2, p {
+					text-align: left;
+					margin-bottom: $space-lg;
+				}
+	
+				h2 {
+					font-size: 3rem;
+					line-height: 1.1em;
+				}
+			}
+
+			.form-section {
+				width: auto;
+
+				form {
+					input {
+						padding: $space-md $space-lg;
+					}
+				}
+			}
+		}
+	}
+}
