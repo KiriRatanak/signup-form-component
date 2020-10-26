@@ -28,12 +28,29 @@
 			</div>
 			<div class="form-section stack">
 				<button class="trail-button">Try it free 7 days <span>then $20/mo. thereafter</span></button>
-				<form action="#" class="stack">
-					<input type="text" placeholder="First Name" required> 
-					<input type="text" placeholder="Last Name" required>
-					<input type="text" placeholder="Email Address" required>
-					<input type="text" placeholder="Password" required>
-					<button>Claim your free trial</button>
+				<form action="#" class="stack signup-form">
+					<div class="stack first-name-input">
+						<img src="/images/icon-error.svg" alt="error-icon">
+						<input type="text" placeholder="First Name" required>					
+						<p class="error-message">First name cannot be empty</p>	
+					</div>
+					<div class="stack last-name-input">
+						<img src="/images/icon-error.svg" alt="error-icon">
+						<input type="text" placeholder="Last Name" required>
+						<p class="error-message">Last name cannot be empty</p>	
+					</div>
+					<div class="stack email-input">
+						<img src="/images/icon-error.svg" alt="error-icon">
+						<input type="email" placeholder="Email Address" required>
+						<p class="error-message">Email cannot be empty</p>
+						<p class="error-message">Looks like this is not an email</p>
+					</div>
+					<div class="stack password-input">
+						<img src="/images/icon-error.svg" alt="error-icon">
+						<input type="password" placeholder="Password" required>
+						<p class="error-message">Password cannot be empty</p>	
+					</div>
+					<button onclick="validateForm()">Claim your free trial</button>
 					<p>By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>
 				</form>
 			</div>
@@ -50,6 +67,56 @@
 		document.querySelector('form button').addEventListener('click', (event) => {
 			event.preventDefault()
 		})
+		let validateEmail = (emailInputHolder) => {
+			let field = emailInputHolder.children[1]
+			let errMsg = emailInputHolder.children[3]
+			let errIcon = emailInputHolder.children[0]
+			let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+			if(field.value) {
+				if(!field.value.match(mailformat)) {
+					field.style.border = '1px solid hsl(0, 100%, 74%)'
+					field.style.color = 'hsl(0, 100%, 74%)'
+					errMsg.style.display = 'block'
+					errIcon.style.display = 'block'
+				}
+				else {
+					field.style.border = '1px solid lightgray'
+					field.style.color = 'hsl(249, 10%, 26%)'
+					errMsg.style.display = 'none'
+					errIcon.style.display = 'none'
+				}
+			}
+			else { errMsg.style.display = 'none' }
+		}
+
+		let validateForm = () => {
+			let firstNameInput = document.querySelector('.first-name-input')
+			let lastNameInput = document.querySelector('.last-name-input')
+			let emailInput = document.querySelector('.email-input')
+			let passwordInput = document.querySelector('.password-input')
+			
+			checkInput(firstNameInput)
+			checkInput(lastNameInput)
+			checkInput(emailInput)
+			validateEmail(emailInput)
+			checkInput(passwordInput)
+		}
+
+		let checkInput = (inputHolder) => {
+			let field = inputHolder.children[1]
+			let errMsg = inputHolder.children[2]
+			let errIcon = inputHolder.children[0]
+			if(!field.value) {
+				field.style.border = '1px solid hsl(0, 100%, 74%)'
+				errMsg.style.display = 'block'
+				errIcon.style.display = 'block'
+			} 
+			else {
+				field.style.border = '1px solid lightgray'
+				errMsg.style.display = 'none'
+				errIcon.style.display = 'none'
+			}
+		}
 	</script>
 </body>
 </html>
